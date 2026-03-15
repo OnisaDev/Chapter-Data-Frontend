@@ -20,7 +20,9 @@ function Landing() {
 
         <div className="button-group">
           <p>¿Ya tienes una cuenta?</p>
-          <button className="btn-yellow">Acceder</button>
+          <Link to="/login">
+            <button className="btn-yellow">Acceder</button>
+          </Link>
         </div>
       </div>
     </div>
