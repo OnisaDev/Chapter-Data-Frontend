@@ -5,12 +5,13 @@ import Register from './pages/Register';
 function App() {
   return (
     <Router>
-      <Routes>
+     <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Register />} />
-      </Routes>
+     </Routes>
     </Router>
   );
 }
 
 export default App;
+
