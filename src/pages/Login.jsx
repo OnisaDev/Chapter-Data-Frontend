@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css'; 
-// Asegúrate de que la ruta a tu logo sea la correcta
 import logo from '../assets/logo.png'; 
 
 function Login() {
   const [formData, setFormData] = useState({ identifier: '', password: '' });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,6 +15,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Datos para enviar al backend:", formData);
+    navigate('/menu');
   };
 
   return (
@@ -25,9 +28,8 @@ function Login() {
 
       {/* SECCIÓN DE LA TARJETA BLANCA */}
       <div className="login-card">
-        <div className="login-title-wrapper">
            <h2 className="login-title">Acceder</h2>
-        </div>
+      
         
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="input-row">

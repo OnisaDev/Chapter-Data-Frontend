@@ -40,16 +40,33 @@
   flex-direction: column;
   gap: 15px;
   width: 100%;
+
 }
 
+.register-form input {
+  background-color: #e8f0fe; /* El azul clarito del mockup */
+  border: 1px solid #002d55;  /* Borde azul oscuro para que resalte */
+  padding: 12px;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;     /* Para que el padding no ensanche el input */
+  outline: none;              /* Quita el borde por defecto al hacer click */
+}
+
+/* Para que cuando el usuario escriba, el fondo siga siendo el mismo */
+.register-form input:focus {
+  background-color: #e8f0fe;
+  border: 2px solid #002d55;
+}
 .input-group {
   display: flex;
   flex-direction: column;
   gap: 5px;
+
 }
 
 .btn-accept {
-  background-color: #002d55; /* El azul oscuro del logo/título queda muy bien aquí */
+  background-color: #002d55; 
   color: white;
   padding: 15px 20px;
   border: none;

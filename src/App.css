@@ -28,7 +28,7 @@ html, body {
   justify-content: center;
   align-items: center;
   gap: 30px;            /* Un poco más de espacio entre logo y texto */
-  margin-bottom: 60px;
+  margin-bottom: 35px;
   width: 90%;           /* Para que no toque los bordes de la pantalla */
   max-width: 1200px;    /* Límite para que no se estire infinito en monitores pro */
 }
