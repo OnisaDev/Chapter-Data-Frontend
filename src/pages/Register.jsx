@@ -1,8 +1,16 @@
 import React from 'react';
 import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 function Register() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/menu');
+  };
+
   return (
     <div className="register-container">
       <header className="header">
@@ -13,7 +21,7 @@ function Register() {
       <div className="register-card">
         <h2 className="register-title">Crear cuenta</h2>
         
-        <form className="register-form">
+        <form className="register-form" onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Nombre de usuario:</label>
             <input type="text" placeholder="Nombre de usuario" />
