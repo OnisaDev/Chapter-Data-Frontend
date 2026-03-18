@@ -5,7 +5,6 @@ import logo from '../assets/logo.png';
 
 function Login() {
   const [formData, setFormData] = useState({ identifier: '', password: '' });
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
