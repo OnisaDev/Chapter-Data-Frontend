@@ -27,16 +27,14 @@ function Login() {
 
       {/* SECCIÓN DE LA TARJETA BLANCA */}
       <div className="login-card">
-           <h2 className="login-title">Acceder</h2>
-      
-        
+        <h2 className="login-title">Acceder</h2>
+
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="input-row">
             <label className="input-label">Nombre de usuario o correo electrónico:</label>
             <input 
               type="text" 
               name="identifier" 
-              className="login-input"
               onChange={handleChange} 
               value={formData.identifier}
               placeholder="Nombre de usuario o email"
@@ -48,7 +46,6 @@ function Login() {
             <input 
               type="password" 
               name="password" 
-              className="login-input"
               onChange={handleChange} 
               value={formData.password}
               placeholder="Contraseña"
@@ -63,4 +60,3 @@ function Login() {
 }
 
 export default Login;
-
