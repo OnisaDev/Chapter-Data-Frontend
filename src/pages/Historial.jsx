@@ -4,7 +4,6 @@ import logo from '../assets/logo.png';
 import userIcon from '../assets/usuario.png';
 import './Historial.css';
 
-// Datos de prueba hasta conectar el backend
 const librosMock = [
   { id: 1, titulo: 'La anomalía', autor: 'Hervé Le Tellier' },
   { id: 2, titulo: 'La vida invisible de Addie LaRue', autor: 'V.E. Schwab' },
@@ -17,9 +16,12 @@ const librosMock = [
 
 function Historial() {
   const navigate = useNavigate();
+
+  // Todos los useState juntos aquí
   const [expandido, setExpandido] = useState(false);
   const [seleccionado, setSeleccionado] = useState(null);
   const [busqueda, setBusqueda] = useState('');
+  const [confirmarEliminar, setConfirmarEliminar] = useState(false);
 
   const librosVisibles = expandido ? librosMock : librosMock.slice(0, 5);
 
@@ -34,12 +36,32 @@ function Historial() {
 
   const handleEliminar = () => {
     if (!seleccionado) return alert('Selecciona un libro primero');
+    setConfirmarEliminar(true);
+  };
+
+  const handleConfirmarEliminar = () => {
     console.log('Eliminar libro con ID:', seleccionado.id);
     // Aquí irá la llamada al backend
+    setConfirmarEliminar(false);
+    setSeleccionado(null);
   };
 
   return (
     <div className="historial-container">
+
+      {/* MODAL CONFIRMACIÓN ELIMINAR */}
+      {confirmarEliminar && (
+        <div className="modal-overlay">
+          <div className="modal-card">
+            <p>¿Estás seguro de que quieres eliminar <strong>{seleccionado.titulo}</strong>?</p>
+            <div className="modal-botones">
+              <button className="btn-accept" onClick={handleConfirmarEliminar}>Sí, eliminar</button>
+              <button className="btn-cancelar" onClick={() => setConfirmarEliminar(false)}>Cancelar</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* HEADER */}
       <div className="header">
         <img src={logo} className="logo" alt="Chapter Data Logo" />
@@ -75,42 +97,42 @@ function Historial() {
           </div>
         </div>
 
+        {/* COLUMNA DERECHA */}
         <div className="historial-right">
-  {/* Perfil a la izquierda de la columna derecha */}
-  <div className="historial-actions">
-    <div className="buscador">
-      <span className="lupa">🔍</span>
-      <input
-        type="text"
-        placeholder="Búsqueda"
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-        className="buscador-input"
-      />
-    </div>
-    <div className="acciones">
-      <div className="accion-item" onClick={() => navigate('/biblioteca')}>
-        <span className="accion-icon">🖼️</span>
-        <span>Visualizar Biblioteca</span>
-      </div>
-      <div className="accion-item" onClick={handleEditar}>
-        <span className="accion-icon">📝</span>
-        <span>Editar registro</span>
-      </div>
-      <div className="accion-item" onClick={handleEliminar}>
-        <span className="accion-icon">🗑️</span>
-        <span>Eliminar registro</span>
-      </div>
-    </div>
-  </div>
+          <div className="historial-actions">
+            <div className="buscador">
+              <span className="lupa">🔍</span>
+              <input
+                type="text"
+                placeholder="Búsqueda"
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+                className="buscador-input"
+              />
+            </div>
+            <div className="acciones">
+              <div className="accion-item" onClick={() => navigate('/biblioteca')}>
+                <span className="accion-icon">🖼️</span>
+                <span>Visualizar Biblioteca</span>
+              </div>
+              <div className="accion-item" onClick={handleEditar}>
+                <span className="accion-icon">📝</span>
+                <span>Editar registro</span>
+              </div>
+              <div className="accion-item" onClick={handleEliminar}>
+                <span className="accion-icon">🗑️</span>
+                <span>Eliminar registro</span>
+              </div>
+            </div>
+          </div>
 
-  {/* Perfil a la derecha del todo */}
-  <div className="profile-card">
-    <img src={userIcon} alt="Usuario" className="user-icon" />
-    <p>Perfil de usuario</p>
-    <span className="username">MCPT</span>
-  </div>
-</div>
+          {/* Perfil a la derecha del todo */}
+          <div className="profile-card">
+            <img src={userIcon} alt="Usuario" className="user-icon" />
+            <p>Perfil de usuario</p>
+            <span className="username">MCPT</span>
+          </div>
+        </div>
       </div>
     </div>
   );
