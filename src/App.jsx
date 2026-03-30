@@ -7,6 +7,7 @@ import AddBook from './pages/AddBook';
 import Historial from './pages/Historial';
 import Biblioteca from './pages/Biblioteca';
 import Estadisticas from './pages/Estadisticas';
+import Usuario from './pages/Usuario';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/historial" element={<Historial />} />
         <Route path="/biblioteca" element={<Biblioteca />} />
         <Route path="/estadisticas" element={<Estadisticas />} />
+        <Route path="/usuario" element={<Usuario />} />
      </Routes>
     </Router>
   );
