@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import MainMenu from './pages/MainMenu';
 import AddBook from './pages/AddBook';
+import Historial from './pages/Historial';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/menu" element={<MainMenu />} />
         <Route path="/addbook" element={<AddBook />} />
+        <Route path="/historial" element={<Historial />} />
      </Routes>
     </Router>
   );

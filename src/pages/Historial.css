@@ -1,0 +1,191 @@
+.historial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.historial-title {
+  color: #f39c12;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.historial-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 30px;
+}
+
+/* Botones izquierda */
+.menu-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.btn-menu {
+  background-color: #ffda79;
+  border: 1px solid #333;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-menu:hover {
+  transform: translateX(10px);
+  background-color: #f7d06a;
+}
+
+/* Lista central */
+.historial-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+}
+
+.ultimas-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.libros-lista {
+  background-color: #d6ebf7;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.libro-item {
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #002d55;
+  transition: background-color 0.15s;
+}
+
+.libro-item:hover {
+  background-color: #b8d9f0;
+}
+
+.libro-seleccionado {
+  background-color: #002d55;
+  color: white;
+  font-weight: bold;
+}
+
+.expand-btn {
+  text-align: center;
+  cursor: pointer;
+  color: #555;
+  font-size: 1.1rem;
+  padding: 4px;
+  letter-spacing: 2px;
+}
+
+.expand-btn:hover {
+  color: #002d55;
+}
+
+/* Columna derecha */
+.historial-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  width: 100%;
+}
+
+/* Buscador */
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buscador-input {
+  padding: 8px 12px;
+  border: 1px solid #002d55;
+  background-color: #e8f0fe;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  outline: none;
+  width: 180px;
+}
+
+.buscador-input:focus {
+  border: 2px solid #002d55;
+}
+
+/* Acciones */
+.acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.accion-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #333;
+  transition: color 0.15s;
+}
+
+.accion-item:hover {
+  color: #002d55;
+  font-weight: bold;
+}
+
+.accion-icon {
+  font-size: 1.2rem;
+}
+
+/* Perfil */
+.profile-card {
+  background-color: #d6ebf7;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-icon {
+  width: 80px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid #002d55;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
