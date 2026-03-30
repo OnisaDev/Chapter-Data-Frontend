@@ -3,8 +3,10 @@ import './MainMenu.css';
 import logo from '../assets/logo.png'; //  logo
 import bookIllustration from '../assets/LIBROS.png'; // La ilustración central
 import userIcon from '../assets/usuario.png'; // El icono de perfil
+import { useNavigate } from 'react-router-dom';
 
 function MainMenu() {
+  const navigate = useNavigate();
   return (
     <div className="menu-container">
       {/* Reutilizamos el header que ya tengo */}
@@ -18,9 +20,10 @@ function MainMenu() {
       <div className="menu-content">
         {/* Columna Izquierda: Acciones */}
         <div className="menu-actions">
-          <button className="btn-menu">Añadir libro</button>
+          <button className="btn-menu" onClick={() => navigate('/addbook')}>Añadir libro</button>
           <button className="btn-menu">Consultar Historial</button>
           <button className="btn-menu">Estadísticas</button>
+
         </div>
 
         {/* Centro: Ilustración */}

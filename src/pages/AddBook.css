@@ -1,0 +1,163 @@
+.addbook-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.addbook-title {
+  color: #f39c12;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.addbook-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 30px;
+}
+
+/* Reutilizamos los estilos de botones y perfil del menú */
+.menu-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.btn-menu {
+  background-color: #ffda79;
+  border: 1px solid #333;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-menu:hover {
+  transform: translateX(10px);
+  background-color: #f7d06a;
+}
+
+.profile-card {
+  background-color: #d6ebf7;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-icon {
+  width: 80px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid #002d55;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Formulario central */
+.addbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.form-row label {
+  width: 130px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #002d55;
+  flex-shrink: 0;
+}
+
+.form-row input,
+.form-row textarea {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #002d55;
+  background-color: #e8f0fe;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  border: 2px solid #002d55;
+  background-color: #e8f0fe;
+}
+
+.form-row-resena {
+  align-items: flex-start;
+}
+
+.form-row-resena textarea {
+  height: 90px;
+  resize: none;
+}
+
+/* Estrellas */
+.stars {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.15s;
+}
+
+.star.filled {
+  color: #f39c12;
+}
+
+/* Botón aceptar */
+.btn-accept-book {
+  background-color: #ffda79;
+  border: 1px solid #333;
+  padding: 10px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.btn-accept-book:hover {
+  background-color: #f7d06a;
+}
