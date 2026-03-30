@@ -1,193 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import userIcon from '../assets/usuario.png';
+import { getLibros, getUsuario } from '../api';
 import './Biblioteca.css';
 
-const librosMock = [
-  {
-    id: 1,
-    titulo: 'La anomalía',
-    autor: 'Hervé Le Tellier',
-    genero: 'Ciencia ficción',
-    usuario: 'MCPT',
-    isbn: '978-8432239738',
-    fechaLectura: '13/02/2026',
-    puntuacion: 3,
-    resena: 'Una novela sorprendente y muy original que mezcla ciencia ficción con reflexión filosófica y drama humano. Lo que más me gustó fue cómo el autor juega con la idea de la identidad y el destino, planteando una situación imposible que obliga a los personajes a cuestionarse quiénes son realmente.'
-  },
-  {
-    id: 2,
-    titulo: 'La vida invisible de Addie LaRue',
-    autor: 'V.E. Schwab',
-    genero: 'Fantasía',
-    usuario: 'MCPT',
-    isbn: '978-8418038',
-    fechaLectura: '20/03/2026',
-    puntuacion: 5,
-    resena: 'Una historia preciosa sobre la memoria y el olvido.'
-  },
-  {
-    id: 3,
-    titulo: 'Donde cantan las langostas',
-    autor: 'Delia Owens',
-    genero: 'Drama',
-    usuario: 'MCPT',
-    isbn: '978-8417347',
-    fechaLectura: '01/01/2026',
-    puntuacion: 4,
-    resena: 'Muy bonita, con una naturaleza increíblemente descrita.'
-  },
-];
-
-const FILTROS = ['Título', 'Autor', 'Género', 'ISBN'];
+const FILTROS = ['Título', 'Autor', 'ISBN'];
 
 function Biblioteca() {
   const navigate = useNavigate();
+  const usuario = getUsuario();
+  const [libros, setLibros] = useState([]);
   const [indice, setIndice] = useState(0);
   const [busqueda, setBusqueda] = useState('');
   const [filtro, setFiltro] = useState('Título');
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState('');
 
-  const librosFiltrados = librosMock.filter((libro) => {
-    const campo = filtro === 'Título' ? libro.titulo
-      : filtro === 'Autor' ? libro.autor
-      : filtro === 'Género' ? libro.genero
-      : libro.isbn;
+  useEffect(() => {
+    getLibros().then(setLibros).catch(() => setError('No se pudieron cargar los libros.')).finally(() => setCargando(false));
+  }, []);
+
+  const librosFiltrados = libros.filter((libro) => {
+    const campo = filtro === 'Título' ? libro.titulo : filtro === 'Autor' ? libro.autor : libro.isbn || '';
     return campo.toLowerCase().includes(busqueda.toLowerCase());
   });
 
   const libro = librosFiltrados[indice];
-
-  const handleSiguiente = () => {
-    if (indice < librosFiltrados.length - 1) setIndice(indice + 1);
-  };
-
-  const handleAnterior = () => {
-    if (indice > 0) setIndice(indice - 1);
-  };
-
-  const handleBusqueda = (e) => {
-    setBusqueda(e.target.value);
-    setIndice(0);
-  };
+  const formatFecha = (f) => { if (!f) return 'N/A'; const [y, m, d] = f.split('-'); return `${d}/${m}/${y}`; };
 
   return (
     <div className="biblioteca-container">
-      {/* HEADER */}
       <div className="header">
-        <img
-          src={logo}
-          className="logo"
-          alt="Chapter Data Logo"
-          onClick={() => navigate('/menu')}
-          style={{ cursor: 'pointer' }}
-        />
+        <img src={logo} className="logo" alt="Chapter Data Logo" onClick={() => navigate('/menu')} style={{ cursor: 'pointer' }} />
         <h1 className="title">El registro perfecto para tu próxima gran historia</h1>
       </div>
-
       <h2 className="biblioteca-title">MI BIBLIOTECA</h2>
-
-      {/* BUSCADOR */}
       <div className="buscador-biblioteca">
-        <span className="lupa">🔍</span>
-        <input
-          type="text"
-          placeholder="Búsqueda"
-          value={busqueda}
-          onChange={handleBusqueda}
-          className="buscador-input"
-        />
-        <select
-          value={filtro}
-          onChange={(e) => { setFiltro(e.target.value); setIndice(0); }}
-          className="filtro-select"
-        >
-          {FILTROS.map((f) => (
-            <option key={f} value={f}>{f}</option>
-          ))}
+        <span>🔍</span>
+        <input type="text" placeholder="Búsqueda" value={busqueda} onChange={(e) => { setBusqueda(e.target.value); setIndice(0); }} className="buscador-input" />
+        <select value={filtro} onChange={(e) => { setFiltro(e.target.value); setIndice(0); }} className="filtro-select">
+          {FILTROS.map((f) => <option key={f} value={f}>{f}</option>)}
         </select>
       </div>
-
       <div className="biblioteca-content">
-        {/* COLUMNA IZQUIERDA: botones */}
         <div className="menu-actions">
           <button className="btn-menu" onClick={() => navigate('/addbook')}>Añadir libro</button>
           <button className="btn-menu" onClick={() => navigate('/historial')}>Consultar Historial</button>
           <button className="btn-menu" onClick={() => navigate('/estadisticas')}>Estadísticas</button>
         </div>
-
-        {/* CENTRO: ficha del libro */}
         <div className="biblioteca-center">
-          {libro ? (
+          {cargando && <p>Cargando...</p>}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          {!cargando && libro ? (
             <>
-              <div className="flecha-anterior">
-                {indice > 0 && (
-                  <span onClick={handleAnterior} className="flecha">»</span>
-                )}
-              </div>
-
+              {indice > 0 && <div className="flecha-anterior"><span onClick={() => setIndice(indice - 1)} className="flecha">« Anterior</span></div>}
               <div className="ficha-libro">
-                <div className="ficha-row">
-                  <span className="ficha-label">TÍTULO</span>
-                  <span className="ficha-valor">{libro.titulo}</span>
-                </div>
-                <div className="ficha-row">
-                  <span className="ficha-label">AUTOR</span>
-                  <span className="ficha-valor">{libro.autor}</span>
-                </div>
-                <div className="ficha-row">
-                  <span className="ficha-label">GÉNERO</span>
-                  <span className="ficha-valor">{libro.genero}</span>
-                </div>
-                <div className="ficha-row">
-                  <span className="ficha-label">USUARIO</span>
-                  <span className="ficha-valor">{libro.usuario}</span>
-                </div>
-                <div className="ficha-row">
-                  <span className="ficha-label">ISBN</span>
-                  <span className="ficha-valor">{libro.isbn}</span>
-                </div>
-                <div className="ficha-row">
-                  <span className="ficha-label">FECHA LECTURA</span>
-                  <span className="ficha-valor">{libro.fechaLectura}</span>
-                </div>
+                <div className="ficha-row"><span className="ficha-label">TÍTULO</span><span className="ficha-valor">{libro.titulo}</span></div>
+                <div className="ficha-row"><span className="ficha-label">AUTOR</span><span className="ficha-valor">{libro.autor}</span></div>
+                <div className="ficha-row"><span className="ficha-label">ISBN</span><span className="ficha-valor">{libro.isbn || '—'}</span></div>
+                <div className="ficha-row"><span className="ficha-label">FECHA LECTURA</span><span className="ficha-valor">{formatFecha(libro.fecha_lectura)}</span></div>
                 <div className="ficha-row">
                   <span className="ficha-label">PUNTUACIÓN</span>
                   <div className="estrellas-readonly">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <span key={star} className={`star ${star <= libro.puntuacion ? 'filled' : ''}`}>★</span>
-                    ))}
+                    {[1,2,3,4,5].map((s) => <span key={s} className={`star ${s <= (libro.puntuacion || 0) ? 'filled' : ''}`}>★</span>)}
                   </div>
                 </div>
-                <div className="ficha-row ficha-row-resena">
-                  <span className="ficha-label">RESEÑA</span>
-                  <div className="resena-box">{libro.resena}</div>
-                </div>
+                <div className="ficha-row ficha-row-resena"><span className="ficha-label">RESEÑA</span><div className="resena-box">{libro.resena || 'Sin reseña'}</div></div>
               </div>
-
-              <div className="flecha-siguiente">
-                {indice < librosFiltrados.length - 1 && (
-                  <span onClick={handleSiguiente} className="flecha">» Siguiente</span>
-                )}
-              </div>
+              {indice < librosFiltrados.length - 1 && <div className="flecha-siguiente"><span onClick={() => setIndice(indice + 1)} className="flecha">Siguiente »</span></div>}
             </>
-          ) : (
-            <p className="sin-resultados">No se encontraron libros.</p>
-          )}
+          ) : (!cargando && <p className="sin-resultados">No se encontraron libros.</p>)}
         </div>
-
-        {/* COLUMNA DERECHA: perfil */}
         <div className="menu-profile">
           <div className="profile-card">
-            <img
-              src={userIcon}
-              alt="Usuario"
-              className="user-icon"
-              onClick={() => navigate('/usuario')}
-              style={{ cursor: 'pointer' }}
-            />
+            <img src={userIcon} alt="Usuario" className="user-icon" onClick={() => navigate('/usuario')} style={{ cursor: 'pointer' }} />
             <p>Perfil de usuario</p>
-            <span className="username">MCPT</span>
+            <span className="username">{usuario?.username}</span>
           </div>
         </div>
       </div>
