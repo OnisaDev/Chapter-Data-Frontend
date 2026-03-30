@@ -186,6 +186,8 @@
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
+  font-size: 1rem;
+  min-width: 140px;
 }
 
 .btn-accept:hover {
@@ -201,6 +203,8 @@
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
+  font-size: 1rem;
+  min-width: 140px;
 }
 
 .btn-cancelar:hover {

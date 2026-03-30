@@ -32,7 +32,13 @@ function AddBook() {
     <div className="addbook-container">
       {/* HEADER */}
       <div className="header">
-        <img src={logo} className="logo" alt="Chapter Data Logo" />
+        <img
+          src={logo}
+          className="logo"
+          alt="Chapter Data Logo"
+          onClick={() => navigate('/menu')}
+          style={{ cursor: 'pointer' }}
+        />
         <h1 className="title">El registro perfecto para tu próxima gran historia</h1>
       </div>
 
@@ -106,7 +112,13 @@ function AddBook() {
         {/* COLUMNA DERECHA: perfil */}
         <div className="menu-profile">
           <div className="profile-card">
-            <img src={userIcon} alt="Usuario" className="user-icon" />
+            <img
+              src={userIcon}
+              alt="Usuario"
+              className="user-icon"
+              onClick={() => navigate('/usuario')}
+              style={{ cursor: 'pointer' }}
+            />
             <p>Perfil de usuario</p>
             <span className="username">MCPT</span>
           </div>

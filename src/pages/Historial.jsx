@@ -17,7 +17,6 @@ const librosMock = [
 function Historial() {
   const navigate = useNavigate();
 
-  // Todos los useState juntos aquí
   const [expandido, setExpandido] = useState(false);
   const [seleccionado, setSeleccionado] = useState(null);
   const [busqueda, setBusqueda] = useState('');
@@ -41,7 +40,6 @@ function Historial() {
 
   const handleConfirmarEliminar = () => {
     console.log('Eliminar libro con ID:', seleccionado.id);
-    // Aquí irá la llamada al backend
     setConfirmarEliminar(false);
     setSeleccionado(null);
   };
@@ -64,7 +62,13 @@ function Historial() {
 
       {/* HEADER */}
       <div className="header">
-        <img src={logo} className="logo" alt="Chapter Data Logo" />
+        <img
+          src={logo}
+          className="logo"
+          alt="Chapter Data Logo"
+          onClick={() => navigate('/menu')}
+          style={{ cursor: 'pointer' }}
+        />
         <h1 className="title">El registro perfecto para tu próxima gran historia</h1>
       </div>
 
@@ -128,7 +132,13 @@ function Historial() {
 
           {/* Perfil a la derecha del todo */}
           <div className="profile-card">
-            <img src={userIcon} alt="Usuario" className="user-icon" />
+            <img
+              src={userIcon}
+              alt="Usuario"
+              className="user-icon"
+              onClick={() => navigate('/usuario')}
+              style={{ cursor: 'pointer' }}
+            />
             <p>Perfil de usuario</p>
             <span className="username">MCPT</span>
           </div>
