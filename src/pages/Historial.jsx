@@ -75,43 +75,42 @@ function Historial() {
           </div>
         </div>
 
-        {/* DERECHA: buscador + acciones + perfil */}
         <div className="historial-right">
-          {/* Buscador */}
-          <div className="buscador">
-            <span className="lupa">🔍</span>
-            <input
-              type="text"
-              placeholder="Búsqueda"
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-              className="buscador-input"
-            />
-          </div>
+  {/* Perfil a la izquierda de la columna derecha */}
+  <div className="historial-actions">
+    <div className="buscador">
+      <span className="lupa">🔍</span>
+      <input
+        type="text"
+        placeholder="Búsqueda"
+        value={busqueda}
+        onChange={(e) => setBusqueda(e.target.value)}
+        className="buscador-input"
+      />
+    </div>
+    <div className="acciones">
+      <div className="accion-item" onClick={() => navigate('/biblioteca')}>
+        <span className="accion-icon">🖼️</span>
+        <span>Visualizar Biblioteca</span>
+      </div>
+      <div className="accion-item" onClick={handleEditar}>
+        <span className="accion-icon">📝</span>
+        <span>Editar registro</span>
+      </div>
+      <div className="accion-item" onClick={handleEliminar}>
+        <span className="accion-icon">🗑️</span>
+        <span>Eliminar registro</span>
+      </div>
+    </div>
+  </div>
 
-          {/* Acciones */}
-          <div className="acciones">
-            <div className="accion-item" onClick={() => navigate('/biblioteca')}>
-              <span className="accion-icon">🖼️</span>
-              <span>Visualizar Biblioteca</span>
-            </div>
-            <div className="accion-item" onClick={handleEditar}>
-              <span className="accion-icon">📝</span>
-              <span>Editar registro</span>
-            </div>
-            <div className="accion-item" onClick={handleEliminar}>
-              <span className="accion-icon">🗑️</span>
-              <span>Eliminar registro</span>
-            </div>
-          </div>
-
-          {/* Perfil */}
-          <div className="profile-card">
-            <img src={userIcon} alt="Usuario" className="user-icon" />
-            <p>Perfil de usuario</p>
-            <span className="username">MCPT</span>
-          </div>
-        </div>
+  {/* Perfil a la derecha del todo */}
+  <div className="profile-card">
+    <img src={userIcon} alt="Usuario" className="user-icon" />
+    <p>Perfil de usuario</p>
+    <span className="username">MCPT</span>
+  </div>
+</div>
       </div>
     </div>
   );

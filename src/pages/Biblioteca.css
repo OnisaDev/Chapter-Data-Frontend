@@ -1,0 +1,212 @@
+.biblioteca-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.biblioteca-title {
+  color: #f39c12;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Buscador superior */
+.buscador-biblioteca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.buscador-input {
+  padding: 8px 12px;
+  border: 1px solid #002d55;
+  background-color: #e8f0fe;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  outline: none;
+  width: 200px;
+}
+
+.buscador-input:focus {
+  border: 2px solid #002d55;
+}
+
+.filtro-select {
+  padding: 8px 12px;
+  border: 1px solid #002d55;
+  background-color: #e8f0fe;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Layout principal */
+.biblioteca-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 30px;
+}
+
+/* Botones izquierda */
+.menu-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.btn-menu {
+  background-color: #ffda79;
+  border: 1px solid #333;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-menu:hover {
+  transform: translateX(10px);
+  background-color: #f7d06a;
+}
+
+/* Ficha central */
+.biblioteca-center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 500px;
+  gap: 10px;
+}
+
+.ficha-libro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.ficha-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.ficha-label {
+  width: 140px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #002d55;
+  flex-shrink: 0;
+}
+
+.ficha-valor {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.ficha-row-resena {
+  align-items: flex-start;
+}
+
+.resena-box {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #002d55;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+  min-height: 100px;
+}
+
+/* Estrellas solo lectura */
+.estrellas-readonly {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  font-size: 1.4rem;
+  color: #ccc;
+}
+
+.star.filled {
+  color: #f39c12;
+}
+
+/* Flechas navegación */
+.flecha-anterior {
+  align-self: flex-start;
+}
+
+.flecha-siguiente {
+  align-self: flex-end;
+}
+
+.flecha {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #002d55;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.flecha:hover {
+  color: #f39c12;
+}
+
+.sin-resultados {
+  color: #888;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Perfil derecha */
+.menu-profile {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.profile-card {
+  background-color: #d6ebf7;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-icon {
+  width: 80px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid #002d55;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 0.9rem;
+}

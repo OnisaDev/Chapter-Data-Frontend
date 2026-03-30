@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import MainMenu from './pages/MainMenu';
 import AddBook from './pages/AddBook';
 import Historial from './pages/Historial';
+import Biblioteca from './pages/Biblioteca';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/menu" element={<MainMenu />} />
         <Route path="/addbook" element={<AddBook />} />
         <Route path="/historial" element={<Historial />} />
+        <Route path="/biblioteca" element={<Biblioteca />} />
      </Routes>
     </Router>
   );

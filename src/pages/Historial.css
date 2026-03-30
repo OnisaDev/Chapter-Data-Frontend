@@ -109,13 +109,20 @@
   color: #002d55;
 }
 
+
 /* Columna derecha */
 .historial-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
   gap: 25px;
   width: 100%;
+}
+
+.historial-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 /* Buscador */
