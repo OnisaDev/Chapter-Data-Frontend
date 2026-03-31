@@ -91,3 +91,11 @@ export async function eliminarCuenta() {
   await request('DELETE', urlConUsuario('/usuario'));
   localStorage.removeItem('usuario');
 }
+
+export async function editarUsuario(datos) {
+  return request('PUT', urlConUsuario('/usuario'), datos);
+}
+
+export async function cambiarPassword(datos) {
+  return request('PUT', urlConUsuario('/usuario/password'), datos);
+}

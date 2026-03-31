@@ -50,10 +50,11 @@ function Usuario() {
         </div>
         <div className="usuario-center">
           <div className="usuario-card">
-            <button className="btn-usuario">Editar información</button>
-            <button className="btn-usuario">Editar imagen de perfil</button>
-            <button className="btn-usuario">Cambio de contraseña</button>
+            <button className="btn-usuario" onClick={() => navigate('/editar-usuario')}>Editar información</button>
+<button className="btn-usuario" disabled style={{ opacity: 0.4, cursor: 'not-allowed' }}>Editar imagen de perfil</button>
+            <button className="btn-usuario" onClick={() => navigate('/cambiar-password')}>Cambio de contraseña</button>
             <button className="btn-usuario btn-eliminar" onClick={() => setConfirmarEliminar(true)}>Eliminar cuenta</button>
+            
           </div>
           <div className="cerrar-sesion" onClick={handleCerrarSesion}>
             <span className="power-icon">⏻</span>

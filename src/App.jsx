@@ -8,6 +8,9 @@ import Historial from './pages/Historial';
 import Biblioteca from './pages/Biblioteca';
 import Estadisticas from './pages/Estadisticas';
 import Usuario from './pages/Usuario';
+import EditarLibro from './pages/EditarLibro';
+import EditarUsuario from './pages/EditarUsuario';
+import CambiarPassword from './pages/CambiarPassword';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
         <Route path="/biblioteca" element={<Biblioteca />} />
         <Route path="/estadisticas" element={<Estadisticas />} />
         <Route path="/usuario" element={<Usuario />} />
+        <Route path="/editar/:id" element={<EditarLibro />} />
+        <Route path="/editar-usuario" element={<EditarUsuario />} />
+        <Route path="/cambiar-password" element={<CambiarPassword />} />
      </Routes>
     </Router>
   );
